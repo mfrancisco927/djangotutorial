@@ -1,0 +1,23 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+    <form method='post' action="/recommender/bestp/"> 
+        {% csrf_token %}
+        My search form Artist: {{ form.artist }} 
+        <br>
+        <input type="submit" value="Best album"></input>
+
+    </form>
+
+
+
+</body>
+
+
+
+</html>
