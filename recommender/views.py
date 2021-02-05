@@ -4,6 +4,7 @@ from django.http import Http404, JsonResponse
 from .models import *
 from .forms import *
 from django.views.decorators.http import require_POST, require_GET
+import numpy as np
 
 
 def find_albums(artist, from_year = None, to_year = None):
@@ -24,14 +25,15 @@ def searchform_post(request):
         # process the data in form.cleaned_data as required
         from_year = None if form.cleaned_data['from_year'] == None else int(form.cleaned_data['from_year'])
         to_year = None if form.cleaned_data['to_year'] == None else int(form.cleaned_data['to_year'])
-
-        return JsonResponse( {
-            'albums' : find_albums(
+        albums = find_albums(
                 form.cleaned_data['artist'],
                 from_year,
                 to_year
             )
-        })
+            
+        # Random 3 of top 10 popular albums
+        albums = list(np.random.permutation(albums[:10]))[:3] 
+        return render(request, 'recommender/searchform.html', {'form': form, 'albums': albums })
     else:
         raise Http404('Something went wrong')
 
@@ -39,6 +41,5 @@ def searchform_post(request):
 @require_GET
 def searchform_get(request):
     form = SearchForm()
-
     return render(request, 'recommender/searchform.html', {'form': form})
 

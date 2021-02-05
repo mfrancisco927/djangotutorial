@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %} My search form {% endblock %}
+{% block title %} Music Search {% endblock %}
 
 {% block content %}
 <form method='post' action="/recommender/bestp/">
     {% csrf_token %}
     <br>
     <center>
-        <h2>My search form</h2>
+        <h2>Music Search</h2>
     </center>
     <br>
     <div>
@@ -26,5 +26,27 @@
     <button class="btn btn-primary btn-lg" type="submit">Submit</button>
 
 </form>
+<br>
+
+{% if albums %}
+<table class="table">
+<tbody>
+<tr>
+
+
+{% for album in albums %}
+
+<td>
+<iframe src="https://open.spotify.com/embed/track/{{ album.id }}" width="300" height="380" 
+frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</td>
+
+{% endfor %}
+
+</tr>
+</tbody>
+</table>
+
+{% endif %}
 
 {% endblock %}
