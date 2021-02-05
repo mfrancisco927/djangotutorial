@@ -8,7 +8,13 @@
 
     <form method='post' action="/recommender/bestp/"> 
         {% csrf_token %}
-        My search form Artist: {{ form.artist }} 
+        My search form 
+        <br> 
+        Artist: {{ form.artist }} 
+        <br>
+        From year: {{ form.from_year }} 
+        <br>
+        To year: {{ form.to_year }} 
         <br>
         <input type="submit" value="Best album"></input>
 
