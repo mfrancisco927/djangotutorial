@@ -1,8 +1,6 @@
 from django.db import models
 
 class Musicdata(models.Model):
-    valence = models.FloatField()
-    year = models.IntegerField()
     acousticness = models.FloatField()
     artists = models.TextField()
     danceability = models.FloatField()
@@ -20,5 +18,7 @@ class Musicdata(models.Model):
     release_date = models.IntegerField()
     speechiness = models.FloatField()
     tempo = models.FloatField()
+    valence = models.FloatField()
+    year = models.IntegerField()
 
 
