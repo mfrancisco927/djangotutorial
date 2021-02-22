@@ -8,6 +8,8 @@ temp/*
 # Any static data files
 *.csv  
 
+# Any executables
+*.exe
 
 # Migrations. FOR NOW, keep out of repo
 **/migrations/*

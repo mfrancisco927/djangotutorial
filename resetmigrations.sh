@@ -9,8 +9,9 @@ python manage.py makemigrations recommender && python manage.py migrate recommen
 
 
 # Now load data from csv file
-sqlite3 db.sqlite3 -cmd ".mode csv" ".import data.csv recommender_musicdata"
+./sqlite3 db.sqlite3 -cmd ".mode csv" ".import data.csv recommender_musicdata"
 
 echo "*********************************************"
 echo "If needed, now create super user and insert data into database"
 
+$SHELL
